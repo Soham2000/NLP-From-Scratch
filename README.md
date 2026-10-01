@@ -8,11 +8,11 @@ Core NLP and LLM techniques implemented from first principles in **PyTorch**. Th
 
 ## Highlights
 
-| Module | What was built | Key result |
-|---|---|---|
-| 1. Word representations & text classification | Naive Bayes, Skip-gram Word2Vec with negative sampling, BoW and Word2Vec classifiers | `<NB accuracy>` on AG News |
-| 2. Language modelling | Smoothed n-gram LMs, a neural n-gram (feed-forward) LM and an RNN LM over characters | `<best perplexity>` validation perplexity (RNN) |
-| 3. LLM alignment | Supervised fine-tuning (SFT) and Direct Preference Optimization (DPO) of an ~82M-parameter GPT-2 on GSM8K | SFT **~2× Pass@5** over the base model |
+| Module | What was built |
+|---|---|
+| 1. Word representations & text classification | Naive Bayes, Skip-gram Word2Vec with negative sampling, BoW and Word2Vec classifiers |
+| 2. Language modelling | Smoothed n-gram LMs, a neural n-gram (feed-forward) LM and an RNN LM over characters |
+| 3. LLM alignment | Supervised fine-tuning (SFT) and Direct Preference Optimization (DPO) of an ~82M-parameter GPT-2 on GSM8K |
 
 ---
 
@@ -25,12 +25,6 @@ Core NLP and LLM techniques implemented from first principles in **PyTorch**. Th
 - **Embedding evaluation:** cosine and Euclidean similarity heatmaps for related vs. unrelated word pairs, compared against pretrained `word2vec-google-news-300`.
 - **Discriminative classifiers:** a bag-of-words classifier and a Word2Vec-feature classifier for comparison with Naive Bayes.
 
-| Model | Accuracy (AG News) |
-|---|---|
-| Naive Bayes | `<fill>` |
-| Bag-of-Words classifier | `<fill>` |
-| Word2Vec-based classifier | `<fill>` |
-
 ---
 
 ## Module 2: Character-Level Language Modelling
@@ -42,14 +36,6 @@ Core NLP and LLM techniques implemented from first principles in **PyTorch**. Th
 - **RNN LM:** a recurrent language model with embedding, RNN and projection layers, trained end to end.
 - **Evaluation:** perplexity on train and validation sets, sampled name generation, prefix-conditioned generation and top-k next-character prediction.
 
-| Model | Validation perplexity |
-|---|---|
-| Unigram (smoothed) | `<fill>` |
-| Bigram (Laplace / interpolation) | `<fill>` |
-| Trigram (smoothed) | `<fill>` |
-| Neural n-gram (FNN) | `<fill>` |
-| RNN | `<fill>` |
-
 ---
 
 ## Module 3: LLM Alignment: SFT and DPO on GSM8K
@@ -60,11 +46,6 @@ Core NLP and LLM techniques implemented from first principles in **PyTorch**. Th
 - **Direct Preference Optimization (DPO):** a preference dataset of chosen vs. rejected responses. The policy is initialised from the SFT model against a **frozen reference model**. Implemented per-token log-probabilities, implicit rewards and the DPO loss (log-sigmoid of the β-scaled reward margin).
 - **Evaluation:** **Pass@1** (single-attempt accuracy) and **Pass@5** (at least one of 5 samples correct), with answer extraction from generated reasoning.
 
-| Model | Pass@1 | Pass@5 |
-|---|---|---|
-| Base model | `<fill>` | `<fill>` |
-| + SFT | `<fill>` | `<fill>` (**~2× base**) |
-| + DPO | `<fill>` | `<fill>` |
 
 > At ~82M parameters, absolute GSM8K scores are expected to be low. The focus is on the relative gains from SFT and DPO and on implementing the training methods correctly.
 
